@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="~{theme/wuxia/common :: meta}"></div>
+    <meta property="og:title" th:content="${'标签 | ' + #servletContext.getAttribute('configMap')['blog_name']}" />
+    <title>标签 | [[${#servletContext.getAttribute('configMap')['blog_name']}]]</title>
+    <div th:replace="~{theme/wuxia/common :: link}"></div>
+</head>
+<body>
+    <div class="wrap">
+        <div th:replace="~{theme/wuxia/common :: nav}"></div>
+            <div class="main">
+                  <div class="tag-content">
+                      <h2>
+                            <i class="fa fa-tags"></i> 武学标签
+                      </h2>
+                      <a class="tag-item" th:href="@{'/tags/'+${tag.name}+'/'}" th:each="tag,status : ${tagList}">[[${tag.name}]]&nbsp;</a>
+                  </div>
+                <div th:if="${count == 0}" th:style="'text-align:center;'" th:text="'~~暂无标签~~'"></div>
+            </div>
+
+        <div th:replace="~{theme/wuxia/common :: footer}"></div>
+    </div>
+    <div th:replace="~{theme/wuxia/common :: script}"></div>
+</body>
+</html>

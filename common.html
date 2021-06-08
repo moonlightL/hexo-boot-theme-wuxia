@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh" mode="light" xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="meta">
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="author" th:content="${#servletContext.getAttribute('configMap')['blog_author']}">
+    <meta name="referrer" content="no-referrer" />
+    [(${#servletContext.getAttribute('configMap')['meta_code']})]
+    <meta name="keywords" th:content="${#servletContext.getAttribute('configMap')['keywords']}" />
+    <meta name="description" th:content="${#servletContext.getAttribute('configMap')['description']}" />
+    <meta property="og:description" th:content="${#servletContext.getAttribute('configMap')['description']}" />
+</div>
+
+<div th:fragment="link">
+    <link rel="dns-prefetch" th:href="@{'//cdn.jsdelivr.net'}">
+    <link rel="shortcut icon" th:href="@{${#servletContext.getAttribute('configMap')['favicon_url']}}"/>
+    <link rel="stylesheet" th:href="@{${baseLink} + '/source/css/bootstrap/css/bootstrap.min.css'}">
+    <link rel="stylesheet" th:href="@{${baseLink} + '/source/fonts/font-awesome/css/font-awesome.min.css'}" />
+    <link rel="stylesheet" th:href="@{${baseLink} + '/source/js/iziModal/css/iziModal.min.css'}">
+    <link rel="stylesheet" th:href="@{${baseLink} + '/source/js/highlightjs/styles/atom-one-dark.min.css'}">
+    <link rel="stylesheet" th:href="@{${baseLink} + '/source/js/fancybox/jquery.fancybox.min.css'}">
+    <link rel="stylesheet" th:href="@{${baseLink} + '/source/js/nprogress/nprogress.min.css'}">
+    <link rel="stylesheet" th:href="@{${baseLink} + '/source/js/overshare/css/share.min.css'}"/>
+    <link rel="stylesheet" th:href="@{${baseLink} + '/source/js/jquery-comment/jquery-comment.css'}"/>
+    <link rel="stylesheet" th:href="@{${prefix} + '/source/css/app.css?v=' + ${activeTheme.configMap['version']}}"/>
+</div>
+
+<div th:fragment="nav" class="nav">
+    <div class="info">
+        <img th:src="@{${#strings.isEmpty(#servletContext.getAttribute('configMap')['logo_url']) != true ? #servletContext.getAttribute('configMap')['logo_url'] : prefix + '/source/images/logo.jpg'}}">
+        <span class="blog-name">[[${#servletContext.getAttribute('configMap')['blog_name']}]]</span>
+    </div>
+    <ul class="nav-list">
+        <li th:each="nav : ${#servletContext.getAttribute('firstNav')}" th:class="${currentNav.code eq nav.code ? 'item active' : 'item'}">
+            <a data-pjax th:href="@{${#lists.isEmpty(nav.children) ? nav.link : 'javascript:void(0)'}}" th:data-link="${nav.link}" th:class="${#lists.isEmpty(nav.children) ? '' : 'more'}">
+                <i th:class="${nav.icon}"></i> [[${nav.name}]]
+                <span th:if="${#lists.isEmpty(nav.children) == false}">
+                    <i class="fa fa-caret-down"></i>
+                </span>
+            </a>
+            <ul class="second-menu" th:if="${#lists.isEmpty(nav.children) == false}">
+                <li class="item" th:each="child : ${nav.children}">
+                    <a data-pjax th:href="@{${child.link}}"><i th:class="${child.icon}"></i> [[${child.name}]]</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div th:fragment="footer" class="footer">
+    <div class="copyright">
+        <span th:utext="${#servletContext.getAttribute('configMap')['power_by']}"></span>
+        • <a href="https://beian.miit.gov.cn/" target="_blank"><span th:utext="${#servletContext.getAttribute('configMap')['record']}"></span></a>
+    </div>
+</div>
+
+<div th:fragment="script">
+    <script th:inline="javascript">
+        let themeName = [[${activeTheme.name}]];
+        let version = [[${activeTheme.configMap['version']}]];
+        let baseLink = [[${baseLink}]];
+    </script>
+    <script type='text/javascript' th:src="@{${baseLink} + '/source/js/plugins.js'}"></script>
+    <script type='text/javascript' th:src="@{${baseLink} + '/source/js/jquery-comment/jquery.cookie.js'}"></script>
+    <script type='text/javascript' th:src="@{${baseLink} + '/source/js/jquery-comment/jquery-comment.js'}"></script>
+    <script type='text/javascript' th:src="@{${baseLink} + '/source/css/bootstrap/js/bootstrap.min.js'}"></script>
+    <script type='text/javascript' th:src="@{${baseLink} + '/source/js/fancybox/jquery.fancybox.min.js'}"></script>
+    <script type='text/javascript' th:src="@{${baseLink} + '/source/js/layer/layer.js'}"></script>
+    <script type='text/javascript' th:src="@{${prefix} + '/source/js/app.js?v=' + ${activeTheme.configMap['version']}}"></script>
+    [(${#servletContext.getAttribute('configMap')['script_code']})]
+</div>

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="~{theme/wuxia/common :: meta}"></div>
+    <meta property="og:title" th:content="${ currentNav.name + ' | ' + #servletContext.getAttribute('configMap')['blog_name']}" />
+    <title>[[${currentNav.name}]] | [[${#servletContext.getAttribute('configMap')['blog_name']}]]</title>
+    <div th:replace="~{theme/wuxia/common :: link}"></div>
+</head>
+
+<body>
+    <div class="wrap">
+        <div th:replace="~{theme/wuxia/common :: nav}"></div>
+        <div class="main">
+            <div class="custom-page-detail">
+                <div class="custom-page-content"  th:utext="${md.md2html(#objects.nullSafe(currentNav.content, ''))}"></div>
+            </div>
+        </div>
+        <div class="top-btn"></div>
+        <div th:replace="~{theme/wuxia/common :: footer}"></div>
+    </div>
+    <div th:replace="~{theme/wuxia/common :: script}"></div>
+</body>
+</html>

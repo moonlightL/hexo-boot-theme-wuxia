@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh" mode="light" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+    <meta name="author" th:content="${#servletContext.getAttribute('configMap')['blog_author']}">
+    <meta name="referrer" content="no-referrer" />
+    [(${#servletContext.getAttribute('configMap')['meta_code']})]
+    <meta name="keywords" th:content="${#servletContext.getAttribute('configMap')['keywords'] + ',' + post.tags}" />
+    <meta name="description" th:content="${post.summary}" />
+    <meta property="og:description" th:content="${post.summary}" />
+    <meta property="og:title" th:content="${post.title + ' | ' + #servletContext.getAttribute('configMap')['blog_name']}" />
+    <title>[[${post.title}]] | [[${#servletContext.getAttribute('configMap')['blog_name']}]]</title>
+    <div th:replace="~{theme/wuxia/common :: link}"></div>
+</head>
+
+<body>
+<div class="wrap">
+    <div th:replace="~{theme/wuxia/common :: nav}"></div>
+    <div class="main">
+        <div class="post-detail">
+            <h1 class="title">[[${post.title}]]</h1>
+
+            <div class="meta">
+                <span><i class="fa fa-calendar-o"></i> 发表于 <span>[[${post.year} + '-' + ${post.month} + '-' + ${post.day}]]</span></span> |
+                <span><i class="fa fa-folder-o"></i> 分类与 <span><a th:href="@{'/categories/'+${post.categoryName}+'/'}">[[${post.categoryName}]]</a></span></span> |
+                <span><i class="fa fa-eye"></i> 阅读数 <span>[[${post.readNum}]]</span></span>
+<!--                <span><i class="fa fa-heart-o"></i> 点赞数 <span>[[${post.praiseNum}]]</span></span>-->
+            </div>
+
+            <div class="post-reprint-info" th:if="${post.reprint}">
+                <div>原作者：[[${post.author}]]</div>
+                <div>原地址: &nbsp;<a class="alert-link" th:href="@{${post.reprintLink}}" target="_blank">[[${post.title}]]</a></div>
+            </div>
+
+            <div id="postToc" class="post-toc">
+                <div class="toc-head">目录</div>
+                <div class="toc-panel"></div>
+            </div>
+
+            <div id="post-content" class="post-content" th:utext="${post.contentHtml}"></div>
+
+            <div class="post-tags" th:if="${#strings.isEmpty(post.tags) == false}">
+                <a class="tag" data-pjax th:href="@{'/tags/'+${tag}+'/'}" rel="tag" th:each="tag,status : ${#strings.arraySplit(post.tags, ',')}">[[${tag}]]</a>
+            </div>
+        </div>
+
+        <div id="post-comment" class="comment-container"></div>
+        <script type="text/javascript" th:inline="javascript">
+            window.postId = [[${post.id}]];
+            window.canComment = [[${post.comment}]]
+        </script>
+    </div>
+    <div class="top-btn"></div>
+    <div th:replace="~{theme/wuxia/common :: footer}"></div>
+</div>
+<div th:replace="~{theme/wuxia/common :: script}"></div>
+</body>
+</html>

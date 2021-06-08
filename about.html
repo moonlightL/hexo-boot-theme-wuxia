@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="~{theme/wuxia/common :: meta}"></div>
+    <meta property="og:title" th:content="${'关于 | ' + #servletContext.getAttribute('configMap')['blog_name']}" />
+    <title>关于 | [[${#servletContext.getAttribute('configMap')['blog_name']}]]</title>
+    <div th:replace="~{theme/wuxia/common :: link}"></div>
+</head>
+<body>
+        <div class="wrap">
+            <div th:replace="~{theme/wuxia/common :: nav}"></div>
+            <div class="main">
+                  <div class="about-content">
+                      <div class="about-desc" th:utext="${md.md2html(#objects.nullSafe(about.descr, '懒人一枚~~'))}"></div>
+                  </div>
+
+                <div id="about-comment" class="comment-container"></div>
+            </div>
+
+            <div class="top-btn"></div>
+
+            <div th:replace="~{theme/wuxia/common :: footer}"></div>
+        </div>
+        <div th:replace="~{theme/wuxia/common :: script}"></div>
+</body>
+</html>

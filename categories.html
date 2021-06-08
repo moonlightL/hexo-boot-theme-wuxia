@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="~{theme/wuxia/common :: meta}"></div>
+    <meta property="og:title" th:content="${'关于 | ' + #servletContext.getAttribute('configMap')['blog_name']}" />
+    <title>关于 | [[${#servletContext.getAttribute('configMap')['blog_name']}]]</title>
+    <div th:replace="~{theme/wuxia/common :: link}"></div>
+</head>
+<body>
+<div class="wrap">
+    <div th:replace="~{theme/wuxia/common :: nav}"></div>
+    <div class="main">
+        <div class="category-content">
+            <h2>
+                <i class="fa fa-th"></i> 武学分类
+            </h2>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-12" th:each="category,iterStat: ${categoryList}">
+                        <a class="item-bg" th:href="@{'/categories/'+${category.name}+'/'}">
+                            <img th:data-original="@{${category.coverUrl}}" class="lazyload" alt="">
+                            <div class="mask"></div>
+                            <p><i></i>[[${category.name}]]<span>([[${category.postNum}]])</span></p>
+                            <div class="remark">[[${category.remark}]]</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="~{theme/wuxia/common :: footer}"></div>
+</div>
+<div th:replace="~{theme/wuxia/common :: script}"></div>
+</body>
+</html>
