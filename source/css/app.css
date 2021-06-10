@@ -9,10 +9,17 @@ a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, bo
 
 body {
     font-family: "Microsoft YaHei","Helvetica Neue",Helvetica,STHeiTi,sans-serif;
+    background-color: #d2d2d2;
 }
 
 h1,h2,h3,h4,h5,h6 {
     font-family: "DaSong", "Open sans", sans-serif
+}
+
+@media (max-width:767px) {
+    h1,h2,h3,h4,h5,h6 {
+        font-family: "Microsoft YaHei", sans-serif
+    }
 }
 
 h2 {
@@ -35,20 +42,24 @@ a:hover {
 }
 
 .wrap {
-    position: relative;
-    max-width: 1920px;
-    min-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: -122px;
     overflow: hidden;
-    background: url('../images/bg-01.jpg') no-repeat top,bottom;
-    background-color: #d2d2d2;
-    z-index: 999;
 }
 
+.wrap img.bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    border: none;
+    width: 100%;
+    height: 48rem;
+    object-fit: cover;
+}
+
+/** 导航 **/
 div.nav {
     position: fixed;
+    top: 0;
     width: 100%;
     background-image: url('../images/nav.png');
     background-position: center;
@@ -83,7 +94,6 @@ div.nav .nav-list {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    height: 42px;
 }
 
 div.nav .nav-list li {
@@ -96,6 +106,7 @@ div.nav .nav-list li {
 }
 
 div.nav .nav-list li a {
+    display: inline-block;
     width: 109px;
     height: 24px;
     z-index: 99;
@@ -126,6 +137,50 @@ div.nav .nav-list > li:hover a.more~.second-menu {
     position: absolute;
     background-image: url('../images/nav_full.png');
     background-position: -216px -344px;
+}
+
+.nav-btn {
+    position: fixed;
+    top: 2rem;
+    right: 1rem;
+    color: #FFF;
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    z-index: 99;
+}
+
+@media (max-width:767px) {
+    div.nav {
+        min-height: 80px;
+    }
+
+    div.nav .nav-list {
+        display: none;
+        margin: 3rem 2rem 2rem 2rem;
+    }
+
+    div.nav .nav-list.open {
+        display: block;
+    }
+
+    div.nav .nav-list li {
+        float: none;
+        display: block;
+        text-align: left;
+        height: unset;
+    }
+
+    div.nav .nav-list li a ~ .second-menu {
+        padding-top: 0;
+        padding-left: 10px;
+        height: unset;
+    }
+
+    div.nav .nav-list > li:hover a.more~.second-menu {
+        position: relative;
+        background-image: unset;
+    }
 }
 
 .footer {
@@ -163,12 +218,23 @@ div.nav .nav-list > li:hover a.more~.second-menu {
     background-position: 0px 0px;
 }
 
+@media (max-width:767px) {
+    .top-btn {
+        transform: scale(.8);
+    }
+
+    .top-btn.show {
+        right: 8px;
+    }
+}
+
 /**  文章列表  */
 
 .main {
-    width: 1020px;
-    margin: auto;
-    margin-top: 50rem;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 48rem;
+    max-width: 1100px;
 }
 
 .main .article-list {
@@ -178,7 +244,8 @@ div.nav .nav-list > li:hover a.more~.second-menu {
 
 .main .article-list .article-item {
     position: relative;
-    width: 1008px;
+    width: 100%;
+    max-width: 1008px;
     height: 182px;
     margin: 15px auto;
     padding-left: 314px;
@@ -256,6 +323,38 @@ div.nav .nav-list > li:hover a.more~.second-menu {
     right: -473px;
     background-repeat: no-repeat;
     background-position: -530px -214px;
+}
+
+@media (max-width:767px) {
+    .main {
+        margin-top: 20rem;
+    }
+
+    .main .article-list .article-item {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .main .article-list .article-item .title {
+        width: 300px;
+        margin-bottom: 0;
+        margin-left: 0;
+        font-size: 18px;
+    }
+
+    .main .article-list .article-item .time {
+        float: left;
+        line-height: 10px;
+        margin-bottom: 16px;
+    }
+
+    .main .article-list .article-item .summary {
+        height: 42px;
+    }
+
+    .main .article-list .article-item .read-btn {
+        right: 12px;
+    }
 }
 
 .main .pagination {
@@ -394,6 +493,31 @@ div.nav .nav-list > li:hover a.more~.second-menu {
     background-position: -1683px -257px;
 }
 
+@media (max-width:767px) {
+    .main .archive-list .archive-item .items {
+        margin: 0 2rem;
+    }
+
+    .main .archive-list .archive-item .content {
+        width: 218px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .main .archive-list .archive-item .date {
+        transform: scale(.8);
+        margin-right: 10px;
+        height: 70px;
+    }
+
+    .main .archive-list .archive-item .title {
+        line-height: 0;
+        margin: 1rem 0;
+        font-size: 16px;
+    }
+}
+
 /**分类**/
 
 .main .category-content {
@@ -468,6 +592,13 @@ div.nav .nav-list > li:hover a.more~.second-menu {
     opacity: 1;
 }
 
+@media (max-width:767px) {
+    .main .category-content .item-bg {
+        margin-top: 0;
+        transform: scale(.8);
+    }
+}
+
 /** 标签  */
 
 .main .tag-content {
@@ -492,6 +623,12 @@ div.nav .nav-list > li:hover a.more~.second-menu {
     color: #fff;
     background-position: -943px -290px;
     background-repeat: no-repeat;
+}
+
+@media (max-width:767px) {
+    .tag-content .tag-items {
+        margin: 0 2rem;
+    }
 }
 
 /** 友链  */
@@ -574,6 +711,26 @@ div.nav .nav-list > li:hover a.more~.second-menu {
     background-position: -1683px -257px;
 }
 
+@media (max-width:767px) {
+    h2 {
+        width: 222px;
+        transform: scale(.7);
+    }
+
+    .main .link-item ul {
+        margin: 0 2rem;
+    }
+
+    .main .link-content .link-item .link-item-tool {
+        margin: 2rem;
+    }
+
+    .main .link-content .link-item .link-item-tool .avatar {
+        right: 0;
+    }
+
+}
+
 /** 关于  */
 
 .main .about-content {
@@ -585,6 +742,12 @@ div.nav .nav-list > li:hover a.more~.second-menu {
     letter-spacing: 1px;
     line-height: 1.75em;
     margin: 0 0 1.5rem 0;
+}
+
+@media (max-width:767px) {
+    .main .about-content .about-desc p  {
+        margin: 0 2rem;
+    }
 }
 
 /** 详情 **/
@@ -1124,75 +1287,6 @@ button.run-code:hover {
     opacity: .8;
 }
 
-/** 评论框样式重写 **/
-.comment-data-body .comment-data-body-info {
-    background-color: #d2d2d2 !important;
-}
-
-.comment-data-body .comment-data-body-content textarea {
-    background-color: #d2d2d2 !important;
-}
-
-.comment-data-body .comment-data-body-btns {
-    background-color: #d2d2d2 !important;
-}
-
-.comment-data-body .comment-data-body-content {
-    background-color: #d2d2d2 !important;
-}
-
-.comment-data-body .comment-data-body-btns .emoji-container .emoji-container-btn {
-    margin-top: 6px !important;
-}
-
-.comment-data-body .comment-data-body-btns .input-container {
-    height: 20px;
-    line-height: 20px;
-}
-
-.emoji-content .emoji-content-title {
-    background-color: #912E2E !important;
-}
-
-.comment-data-body .comment-data-body-btns .emoji-container .emoji-content::before {
-    background: #912E2E;
-    border-left: 1px solid #912E2E;
-    border-top: 1px solid #912E2E;
-    top: -5px !important;
-}
-
-
-.comment-data-body .comment-data-body-btns .send-message-btn {
-    background-color: #912E2E !important;
-    border: none;
-    height: 37px;
-}
-
-.comment-data-body .comment-data-body-btns .send-message-btn:hover {
-    background-color: #bf3131 !important;
-}
-
-.comment-container .comment-data .comment-data-title, .comment-container .comment-list .comment-list-title {
-    border-bottom: none !important;
-}
-
-.comment-list-body .comment-list-item .info .date {
-    background-color: #a71414 !important;
-}
-
-.comment-container a {
-    color: #333 !important;
-}
-
-.comment-list-body .comment-list-item .info .content p {
-    padding: 1rem;
-}
-
-.comment-list .comment-list-page-bar ul li.active a {
-    background-color: #912E2E !important;
-    color: #fff !important;
-}
-
 /** 自定义页面 **/
 .custom-page-content p, .custom-page-content blockquote p {
     font-size: 16px;
@@ -1209,6 +1303,17 @@ button.run-code:hover {
 .main .custom-page-content table th {
     background: #912E2E;
     color: #fff
+}
+
+@media (max-width:767px) {
+    h3,h4,h5,h6 {
+        margin: 0 2rem 1rem 2rem;
+        font-weight: 600;
+    }
+
+    .custom-page-content p, .custom-page-content blockquote p {
+        margin: 0 2rem;
+    }
 }
 
 /** tab **/

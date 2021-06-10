@@ -43,7 +43,7 @@ ul {
 }
 
 .comment-container a {
-    color: #c2c5ca;
+    color: #333;
     text-decoration: none !important;
     border-bottom: none;
 }
@@ -55,7 +55,7 @@ ul {
 .comment-container .comment-data .comment-data-title,
 .comment-container .comment-list .comment-list-title {
     position: relative;
-    border-bottom: 1px solid #afb2c1;
+    border-bottom: none;
 }
 
 .comment-container .comment-data .comment-data-title a {
@@ -80,7 +80,7 @@ ul {
     display: inline-block;
     width: 62px;
     height: 62px;
-    background-color: #fff;
+    background-color: #d2d2d2;
     text-align: center;
     line-height: 64px;
 }
@@ -131,13 +131,14 @@ ul {
     height: 38px;
     border: 1px solid #afb2c1;
     border-radius: 0 0 5px 5px;
+    background-color: #d2d2d2;
 }
 
 .comment-data-body .comment-data-body-content {
     position: relative;
     display: inline-block;
     width: calc(100% - 72px);
-    background-color: #fff;
+    background-color: #d2d2d2;
     margin-left: 72px;
     margin-bottom: 30px;
 }
@@ -161,7 +162,7 @@ ul {
 .comment-data-body .comment-data-body-content textarea {
     display: block;
     height: 126px;
-    background-color: #fff;
+    background-color: #d2d2d2;
     outline: none;
     padding: 1.25rem;
     resize: none;
@@ -191,10 +192,11 @@ ul {
     position: absolute;
     top: 0;
     right: -1px;
-    background: #cad9de;
+    background: #912E2E;
     color: #fff;
-    padding: 8px;
+    padding: 10px;
     border-radius: 0 0 5px 0 !important;
+    border: none;
 }
 
 @media (max-width: 767px) {
@@ -207,7 +209,7 @@ ul {
 }
 
 .comment-data-body .comment-data-body-btns .send-message-btn:hover {
-    background: #b8c8ce;
+    background: #bf3131;
 }
 
 .comment-data-body .comment-data-body-btns .emoji-container {
@@ -219,7 +221,7 @@ ul {
 }
 
 .comment-data-body .comment-data-body-btns .emoji-container .emoji-container-btn {
-    margin-top: 12px;
+    margin-top: 6px;
     margin-left: 12px;
     font-size: 2.25rem !important;
 }
@@ -234,14 +236,11 @@ ul {
     background: #fff;
     z-index: 2;
     box-shadow: 0 1px 10px #e1e1e1;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: all .5s;
+    display: none;
 }
 
 .slideUp {
-    opacity: 1 !important;
-    transform: translateY(0);
+    display: block !important;
 }
 
 @media (max-width: 767px) {
@@ -255,17 +254,17 @@ ul {
     position: absolute;
     width: 10px;
     height: 10px;
-    top: -6px;
+    top: -5px;
     left: 15px;
-    background: #cad9de;
+    background: #912E2E;
     transform: rotate(45deg);
-    border-left: 1px solid #b6c5ca;
-    border-top: 1px solid #b6c5ca;
+    border-left: 1px solid #912E2E;
+    border-top: 1px solid #912E2E;
 }
 
 .emoji-content .emoji-content-title {
     height: 28px;
-    background-color: #cad9de;
+    background-color: #912E2E;
     border-radius: 5px 5px 0 0;
 }
 
@@ -325,6 +324,8 @@ ul {
     font-size: 14px;
     border: 1px solid #9499af;
     padding: 0 10px;
+    height: 20px;
+    line-height: 20px;
 }
 
 .comment-data-body .comment-data-body-btns .input-container span {
@@ -343,9 +344,7 @@ ul {
     background: #fff;
     z-index: 1;
     box-shadow: 0 1px 10px #e1e1e1;
-    transform: translateY(10px);
-    opacity: 0;
-    transition: all .5s;
+    display: none;
 }
 
 .comment-data-body .comment-data-body-btns .input-container .input-content::before {
@@ -449,7 +448,7 @@ ul {
     top: -2px;
     right: 0;
     padding: 5px;
-    background-color: #cad9de;
+    background-color: #a71414;
     color: #fff;
     border-radius: 2px;
 }
@@ -462,7 +461,7 @@ ul {
 }
 
 .comment-list-body .comment-list-item .info .content p {
-    padding-top: 10px;
+    padding: 1rem;
 }
 
 .comment-list-body .comment-list-item .info .content p img{
@@ -506,12 +505,12 @@ ul {
     }
 
     .comment-container .comment-data-body {
-        margin-top: 14px;
+        margin: 14px 2rem 0 2rem;
     }
 
     .comment-list-body .comment-list-item {
         padding: 5px 0;
-        margin: 10px auto;
+        margin: 10px 2rem;
     }
 
     .comment-list-body .comment-list-item .reply-list-body .comment-list-item {
@@ -575,6 +574,7 @@ ul {
 }
 
 .comment-list .comment-list-page-bar ul li.active a {
+    background-color: #912E2E;
     color: #fff;
 }
 

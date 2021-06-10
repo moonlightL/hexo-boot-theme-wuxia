@@ -8,20 +8,23 @@
     <div th:replace="~{theme/wuxia/common :: link}"></div>
 </head>
 <body>
-        <div class="wrap">
-            <div th:replace="~{theme/wuxia/common :: nav}"></div>
-            <div class="main">
-                  <div class="about-content">
-                      <div class="about-desc" th:utext="${md.md2html(#objects.nullSafe(about.descr, '懒人一枚~~'))}"></div>
-                  </div>
+    <div class="wrap">
+        <img class="bg" th:src="@{${prefix} + '/source/images/bg-01.jpg'}" alt="">
 
-                <div id="about-comment" class="comment-container"></div>
-            </div>
+        <div th:replace="~{theme/wuxia/common :: nav}"></div>
 
-            <div class="top-btn"></div>
+        <div class="main">
+              <div class="about-content">
+                  <div class="about-desc" th:utext="${md.md2html(#objects.nullSafe(about.descr, '懒人一枚~~'))}"></div>
+              </div>
 
-            <div th:replace="~{theme/wuxia/common :: footer}"></div>
+            <div id="about-comment" class="comment-container"></div>
         </div>
-        <div th:replace="~{theme/wuxia/common :: script}"></div>
+
+        <div class="top-btn"></div>
+
+        <div th:replace="~{theme/wuxia/common :: footer}"></div>
+    </div>
+    <div th:replace="~{theme/wuxia/common :: script}"></div>
 </body>
 </html>

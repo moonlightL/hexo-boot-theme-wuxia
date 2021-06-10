@@ -32,7 +32,7 @@
         <img th:src="@{${#strings.isEmpty(#servletContext.getAttribute('configMap')['logo_url']) != true ? #servletContext.getAttribute('configMap')['logo_url'] : prefix + '/source/images/logo.jpg'}}">
         <span class="blog-name">[[${#servletContext.getAttribute('configMap')['blog_name']}]]</span>
     </div>
-    <ul class="nav-list">
+    <ul class="nav-list" id="navList">
         <li th:each="nav : ${#servletContext.getAttribute('firstNav')}" th:class="${currentNav.code eq nav.code ? 'item active' : 'item'}">
             <a data-pjax th:href="@{${#lists.isEmpty(nav.children) ? nav.link : 'javascript:void(0)'}}" th:data-link="${nav.link}" th:class="${#lists.isEmpty(nav.children) ? '' : 'more'}">
                 <i th:class="${nav.icon}"></i> [[${nav.name}]]
@@ -47,6 +47,7 @@
             </ul>
         </li>
     </ul>
+    <span class="nav-btn visible-xs" id="navBtn"><i class="fa fa-reorder"></i></span>
 </div>
 
 <div th:fragment="footer" class="footer">

@@ -114,8 +114,16 @@
         }
     };
 
+    const navEvent = function() {
+        $("#navBtn").off("click").on("click", function () {
+            let $navList = $(".nav-list");
+            $navList.toggleClass("open");
+        });
+    };
+
     $(function() {
         loadLazy();
+        navEvent();
         toTop();
         postEvent();
         aboutEvent();

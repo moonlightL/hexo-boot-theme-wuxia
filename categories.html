@@ -3,13 +3,16 @@
 
 <head>
     <div th:replace="~{theme/wuxia/common :: meta}"></div>
-    <meta property="og:title" th:content="${'关于 | ' + #servletContext.getAttribute('configMap')['blog_name']}" />
-    <title>关于 | [[${#servletContext.getAttribute('configMap')['blog_name']}]]</title>
+    <meta property="og:title" th:content="${'分类 | ' + #servletContext.getAttribute('configMap')['blog_name']}" />
+    <title>分类 | [[${#servletContext.getAttribute('configMap')['blog_name']}]]</title>
     <div th:replace="~{theme/wuxia/common :: link}"></div>
 </head>
 <body>
 <div class="wrap">
+    <img class="bg" th:src="@{${prefix} + '/source/images/bg-01.jpg'}" alt="">
+
     <div th:replace="~{theme/wuxia/common :: nav}"></div>
+
     <div class="main">
         <div class="category-content">
             <h2>

@@ -9,16 +9,21 @@
 </head>
 <body>
     <div class="wrap">
+        <img class="bg" th:src="@{${prefix} + '/source/images/bg-01.jpg'}" alt="">
+
         <div th:replace="~{theme/wuxia/common :: nav}"></div>
-            <div class="main">
-                  <div class="tag-content">
-                      <h2>
-                            <i class="fa fa-tags"></i> 武学标签
-                      </h2>
+
+        <div class="main">
+              <div class="tag-content">
+                  <h2>
+                        <i class="fa fa-tags"></i> 武学标签
+                  </h2>
+                  <div class="tag-items">
                       <a class="tag-item" th:href="@{'/tags/'+${tag.name}+'/'}" th:each="tag,status : ${tagList}">[[${tag.name}]]&nbsp;</a>
                   </div>
-                <div th:if="${count == 0}" th:style="'text-align:center;'" th:text="'~~暂无标签~~'"></div>
-            </div>
+              </div>
+            <div th:if="${count == 0}" th:style="'text-align:center;'" th:text="'~~暂无标签~~'"></div>
+        </div>
 
         <div th:replace="~{theme/wuxia/common :: footer}"></div>
     </div>

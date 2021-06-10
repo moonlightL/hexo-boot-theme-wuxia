@@ -9,39 +9,48 @@
 </head>
 <body>
         <div class="wrap">
+
+            <img class="bg" th:src="@{${prefix} + '/source/images/bg-01.jpg'}" alt="">
+
             <!-- 导航 -->
             <div th:replace="~{theme/wuxia/common :: nav}"></div>
 
-                <div class="main">
-                      <div class="article-list">
-                            <article class="article-item" th:each="post,iterStat : ${pageInfo.data}">
-                                 <img th:data-original="@{${post.coverUrl}}" alt="" class="cover lazyload">
-                                 <h3 class="title" th:text="${post.title}"></h3>
-                                  <div class="time" th:text="${post.publishDate}"></div>
-                                 <div class="summary" th:text="${post.summary}"></div>
-                                 <a th:href="@{'/' + ${post.link}}" class="read-btn"></a>
-                            </article>
+            <div class="main">
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-md-12">
+                              <div class="article-list">
+                                  <article class="article-item" th:each="post,iterStat : ${pageInfo.data}">
+                                      <img th:data-original="@{${post.coverUrl}}" alt="" class="cover lazyload hidden-xs">
+                                      <h3 class="title" th:text="${post.title}"></h3>
+                                      <div class="time" th:text="${post.publishDate}"></div>
+                                      <div class="summary" th:text="${post.summary}"></div>
+                                      <a th:href="@{'/' + ${post.link}}" class="read-btn"></a>
+                                  </article>
+                              </div>
+                          </div>
                       </div>
 
-                        <div class="pagination">
-                             <span class="page" th:if="${pageInfo.hasPreviousPage}">
-                                 <a href="#" class="prev-btn" th:href="@{${pageInfo.pageNum-1} == 1 ? '/' : '/page/' + ${pageInfo.pageNum-1}+'/'}"></a>
+                      <div class="pagination">
+                         <span class="page" th:if="${pageInfo.hasPreviousPage}">
+                             <a href="#" class="prev-btn" th:href="@{${pageInfo.pageNum-1} == 1 ? '/' : '/page/' + ${pageInfo.pageNum-1}+'/'}"></a>
+                         </span>
+                          <span th:each="pageNum, iterStat : ${pageInfo.navigatepageNums}">
+                             <span th:if="${pageNum == pageInfo.pageNum}" class="page current">
+                                 <a href="javascript:void(0)" th:text="${pageNum}"></a>
                              </span>
-                             <span th:each="pageNum, iterStat : ${pageInfo.navigatepageNums}">
-                                 <span th:if="${pageNum == pageInfo.pageNum}" class="page current">
-                                     <a href="javascript:void(0)" th:text="${pageNum}"></a>
-                                 </span>
-                                <span th:if="${pageNum != pageInfo.pageNum}" class="page">
-                                    <a th:href="@{'/page/' + ${pageNum}+'/'}" th:text="${pageNum}"></a>
-                                </span>
-                             </span>
-                             <span class="page" th:if="${pageInfo.hasNextPage}">
-                                 <a href="#" class="next-btn" th:href="@{'/page/' + ${pageInfo.pageNum+1}+'/'}"></a>
-                             </span>
-                        </div>
-                </div>
+                            <span th:if="${pageNum != pageInfo.pageNum}" class="page">
+                                <a th:href="@{'/page/' + ${pageNum}+'/'}" th:text="${pageNum}"></a>
+                            </span>
+                         </span>
+                          <span class="page" th:if="${pageInfo.hasNextPage}">
+                             <a href="#" class="next-btn" th:href="@{'/page/' + ${pageInfo.pageNum+1}+'/'}"></a>
+                         </span>
+                      </div>
+                  </div>
+            </div>
 
-                <div class="top-btn"></div>
+            <div class="top-btn"></div>
 
             <!-- footer -->
             <div th:replace="~{theme/wuxia/common :: footer}"></div>
