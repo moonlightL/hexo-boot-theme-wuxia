@@ -19,8 +19,10 @@
 <body>
 <div class="wrap">
 
-    <img class="bg" th:src="@{${prefix} + '/source/images/bg-01.jpg'}" alt="">
-    <div class="fadeBottom"></div>
+    <div class="cover">
+        <img th:src="@{${prefix} + '/source/images/bg-01.jpg'}" alt="">
+        <div class="fadeBottom"></div>
+    </div>
 
     <div th:replace="~{theme/wuxia/common :: nav}"></div>
     <div class="main">
@@ -28,10 +30,10 @@
             <h1 class="title">[[${post.title}]]</h1>
 
             <div class="meta">
-                <span><i class="fa fa-calendar-o"></i> 发表于 <span>[[${post.year} + '-' + ${post.month} + '-' + ${post.day}]]</span></span> |
-                <span><i class="fa fa-folder-o"></i> 分类与 <span><a th:href="@{'/categories/'+${post.categoryName}+'/'}">[[${post.categoryName}]]</a></span></span> |
-                <span><i class="fa fa-eye"></i> 阅读数 <span>[[${post.readNum}]]</span></span>
-<!--                <span><i class="fa fa-heart-o"></i> 点赞数 <span>[[${post.praiseNum}]]</span></span>-->
+                <span><i class="fa fa-calendar-o"></i> <span class="hidden-xs">发表于</span> <span> [[${post.year} + '-' + ${post.month} + '-' + ${post.day}]]</span></span> |
+                <span><i class="fa fa-folder-o"></i> <span class="hidden-xs">分类与</span> <span><a th:href="@{'/categories/'+${post.categoryName}+'/'}"> [[${post.categoryName}]]</a></span></span> |
+                <span><i class="fa fa-eye"></i> <span class="hidden-xs">阅读数</span> <span> [[${post.readNum}]]</span></span> |
+                <span><i class="fa fa-comments-o"></i> <span class="hidden-xs">评论数</span> <span> [[${post.commentNum}]]</span></span>
             </div>
 
             <div class="post-reprint-info" th:if="${post.reprint}">
@@ -39,7 +41,7 @@
                 <div>原地址: &nbsp;<a class="alert-link" th:href="@{${post.reprintLink}}" target="_blank">[[${post.title}]]</a></div>
             </div>
 
-            <div id="postToc" class="post-toc">
+            <div id="postToc" class="post-toc hidden-xs">
                 <div class="toc-head">目录</div>
                 <div class="toc-panel"></div>
             </div>

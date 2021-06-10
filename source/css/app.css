@@ -30,6 +30,7 @@ h2 {
     background: url('../images/bg-title.png') no-repeat;
     color: #FFF;
     font-size: 24px;
+    margin-left: -3rem;
 }
 
 a {
@@ -45,20 +46,31 @@ a:hover {
     overflow: hidden;
 }
 
-.wrap img.bg {
+.wrap .cover {
     position: absolute;
     top: 0;
     left: 0;
     z-index: -1;
+    width: 100%;
+    border: none;
+}
+
+.wrap .cover img {
     border: none;
     width: 100%;
     height: 48rem;
     object-fit: cover;
 }
 
+@media (max-width:767px) {
+    .wrap .cover img {
+        height: 20rem;
+    }
+}
+
 .fadeBottom {
     position: absolute;
-    bottom: 164px;
+    bottom: 0;
     display: block;
     width: 100%;
     height: 50px;
@@ -726,12 +738,8 @@ div.nav .nav-list > li:hover a.more~.second-menu {
         transform: scale(.7);
     }
 
-    .main .link-item ul {
-        margin: 0 2rem;
-    }
-
-    .main .link-content .link-item .link-item-tool {
-        margin: 2rem;
+    .main .link-content {
+        margin: 1rem 2rem;
     }
 
     .main .link-content .link-item .link-item-tool .avatar {
@@ -754,8 +762,12 @@ div.nav .nav-list > li:hover a.more~.second-menu {
 }
 
 @media (max-width:767px) {
-    .main .about-content .about-desc p  {
+    .main .about-content .about-desc {
         margin: 0 2rem;
+    }
+
+    .main .about-content~.comment-container h2 {
+        margin-left: -12px;
     }
 }
 
@@ -764,6 +776,8 @@ div.nav .nav-list > li:hover a.more~.second-menu {
 .main .post-detail {
     margin: 80px auto;
     line-height: 2;
+    width: 100%;
+    max-width: 980px;
 }
 
 .main .post-detail h1,
@@ -790,6 +804,7 @@ div.nav .nav-list > li:hover a.more~.second-menu {
     padding: 0 0 0 36px;
     font-size: 20px;
     margin-top: 20px;
+    margin-left: 1rem;
     color: #a22020;
     box-sizing: border-box;
     background: url('../images/h2.png')  no-repeat;
@@ -813,7 +828,8 @@ div.nav .nav-list > li:hover a.more~.second-menu {
 .main .post-detail .post-toc {
     position: absolute;
     width: 200px;
-    left: -12rem;
+    left: -10rem;
+    text-align: center;
 }
 
 .main .post-detail .toc-head {
@@ -853,6 +869,10 @@ div.nav .nav-list > li:hover a.more~.second-menu {
 .main .post-toc .toc-panel {
     overflow: hidden;
     overflow-y: auto;
+    /*border-top: 1px solid #912E2E;*/
+    border-left: 1px solid #912E2E;
+    border-right: 1px solid #912E2E;
+    padding: 1rem;
 }
 
 .main .post-toc .toc-panel .nav-item {
@@ -944,13 +964,13 @@ div.nav .nav-list > li:hover a.more~.second-menu {
     line-height: 1.75em;
     margin: .8rem 0 1.5rem 0;
     word-wrap: break-word;
-    padding-left: 2rem;
+    padding: 0 2rem;
 }
 
 
 .main .post-content ul,
 .main .post-content ol {
-    padding-left: 2rem;
+    padding: 0 2rem;
 }
 
 .main .post-content ul li,
@@ -1019,7 +1039,7 @@ div.nav .nav-list > li:hover a.more~.second-menu {
     border-radius: 4px;
     font-family: sans-serif;
     box-shadow: 0 1px 20px 1px var(--shadow-color);
-    margin-left: 2rem;
+    margin: 0 2rem;
 }
 
 .main .post-content .highlight table,
@@ -1296,7 +1316,69 @@ button.run-code:hover {
     opacity: .8;
 }
 
+.main .post-detail~.comment-container {
+    width: 100%;
+    max-width: 980px;
+    margin: 2rem;
+}
+
+@media (max-width:767px) {
+
+    .main .post-detail h1.title {
+        font-size: 24px;
+    }
+
+    .main .post-detail h2 {
+        margin-left: 0;
+        transform: scale(.9);
+    }
+
+    .main .post-detail h3,
+    .main .post-detail h4,
+    .main .post-detail h5,
+    .main .post-detail h6 {
+        padding-left: 0;
+    }
+
+    .main .post-detail h3 {
+        font-size: 18px;
+    }
+
+    .main .post-detail~.comment-container {
+        margin: 0;
+    }
+
+    .main .post-detail~.comment-container h2 {
+        margin-left: -14px;
+    }
+
+    .main .post-detail .post-content {
+        margin-right: 2rem;
+    }
+
+    .main .post-detail pre {
+        width: unset;
+    }
+
+    .main .post-detail table {
+        width: unset;
+    }
+}
+
 /** 自定义页面 **/
+
+.main .custom-page-detail {
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+.custom-page-content h1 {
+    margin: 2rem auto;
+    font-size: 28px;
+    font-weight: 600;
+}
+
 .custom-page-content p, .custom-page-content blockquote p {
     font-size: 16px;
     letter-spacing: 1px;
@@ -1320,9 +1402,18 @@ button.run-code:hover {
         font-weight: 600;
     }
 
-    .custom-page-content p, .custom-page-content blockquote p {
+    .main .custom-page-detail {
+        margin: 0 auto;
+    }
+
+    .main .custom-page-detail .custom-page-content {
         margin: 0 2rem;
     }
+
+    .custom-page-content p, .custom-page-content blockquote p {
+        margin: 0 1rem;
+    }
+
 }
 
 /** tab **/
@@ -1385,4 +1476,20 @@ button.run-code:hover {
     display: block;
     text-align: center;
     margin: 1.5rem auto;
+}
+
+@media (max-width:767px) {
+    .tab-items .tab-item {
+        padding: .2rem .5rem !important;
+    }
+
+    .tab-panels .tab-panel img {
+        width: 100% !important;
+        height: 200px !important;
+        object-fit: cover;
+    }
+
+    .tab-items .tab-item a {
+        line-height: 32px;
+    }
 }

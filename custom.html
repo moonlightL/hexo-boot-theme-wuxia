@@ -10,9 +10,12 @@
 
 <body>
     <div class="wrap">
-        <img th:if="${#strings.startsWith(currentNav.cover,'http')}" class="lazyload bg" th:data-original="@{${currentNav.cover}}">
-        <img th:if="${#strings.startsWith(currentNav.cover,'http') == false}" class="lazyload bg" th:data-original="@{${prefix} + '/source/images/bg-01.jpg'}">
-        <div class="fadeBottom"></div>
+
+        <div class="cover">
+            <img th:if="${#strings.startsWith(currentNav.cover,'http')}" class="lazyload bg" th:data-original="@{${currentNav.cover}}">
+            <img th:if="${#strings.startsWith(currentNav.cover,'http') == false}" class="lazyload bg" th:data-original="@{${prefix} + '/source/images/bg-01.jpg'}">
+            <div class="fadeBottom"></div>
+        </div>
 
         <div th:replace="~{theme/wuxia/common :: nav}"></div>
         <div class="main">

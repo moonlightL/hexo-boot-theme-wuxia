@@ -9,8 +9,11 @@
 </head>
 <body>
     <div class="wrap">
-        <img class="bg" th:src="@{${prefix} + '/source/images/bg-01.jpg'}" alt="">
-        <div class="fadeBottom"></div>
+
+        <div class="cover">
+            <img th:src="@{${prefix} + '/source/images/bg-01.jpg'}" alt="">
+            <div class="fadeBottom"></div>
+        </div>
 
         <div th:replace="~{theme/wuxia/common :: nav}"></div>
 

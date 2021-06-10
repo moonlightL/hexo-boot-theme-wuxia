@@ -10,13 +10,16 @@
 <body>
         <div class="wrap">
 
-            <img class="bg" th:src="@{${prefix} + '/source/images/bg-01.jpg'}" alt="">
-            <div class="fadeBottom"></div>
+            <div class="cover">
+                <img th:src="@{${prefix} + '/source/images/bg-01.jpg'}" alt="">
+                <div class="fadeBottom"></div>
+            </div>
 
             <!-- 导航 -->
             <div th:replace="~{theme/wuxia/common :: nav}"></div>
 
             <div class="main">
+
                   <div class="container">
                       <div class="row">
                           <div class="col-md-12">

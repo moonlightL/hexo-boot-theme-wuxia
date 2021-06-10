@@ -10,52 +10,54 @@
 <body>
         <div class="wrap">
 
-            <img class="bg" th:src="@{${prefix} + '/source/images/bg-01.jpg'}" alt="">
-            <div class="fadeBottom"></div>
+            <div class="cover">
+                <img th:src="@{${prefix} + '/source/images/bg-01.jpg'}" alt="">
+                <div class="fadeBottom"></div>
+            </div>
 
             <!-- 导航 -->
             <div th:replace="~{theme/wuxia/common :: nav}"></div>
             <div class="main">
-                        <h2>
-                             <i class="fa fa-archive"></i> 修炼心得
-                        </h2>
+                <h2>
+                     <i class="fa fa-archive"></i> 修炼心得
+                </h2>
 
-                        <div class="archive-list">
-                            <div class="archive-item" th:each="map,iterStat : ${pageInfo.data}">
-                                <h3 class="year">[[${map.key}]]年</h3>
-                                <div class="items" th:each="vo,iterStat2 : ${map.value}">
-                                    <div class="date">
-                                        <span class="month">[[${vo.month}]]月</span>
-                                        <span class="day">[[${vo.day}]]日</span>
-                                    </div>
-                                    <div class="content">
-                                        <h3 class="title">
-                                            <a th:href="@{'/'+${vo.link}}">[[${vo.title}]]</a>
-                                        </h3>
-                                        <div class="desc">
-                                            <span>浏览数: [[${vo.readNum}]]</span>&nbsp;&nbsp;<!--<span>点赞数: [[${vo.praiseNum}]]</span>-->
-                                        </div>
-                                    </div>
+                <div class="archive-list">
+                    <div class="archive-item" th:each="map,iterStat : ${pageInfo.data}">
+                        <h3 class="year">[[${map.key}]]年</h3>
+                        <div class="items" th:each="vo,iterStat2 : ${map.value}">
+                            <div class="date">
+                                <span class="month">[[${vo.month}]]月</span>
+                                <span class="day">[[${vo.day}]]日</span>
+                            </div>
+                            <div class="content">
+                                <h3 class="title">
+                                    <a th:href="@{'/'+${vo.link}}">[[${vo.title}]]</a>
+                                </h3>
+                                <div class="desc">
+                                    <span>浏览数: [[${vo.readNum}]]</span>&nbsp;&nbsp;<!--<span>点赞数: [[${vo.praiseNum}]]</span>-->
                                 </div>
                             </div>
                         </div>
-
-                    <div class="pagination">
-                         <span class="page" th:if="${pageInfo.hasPreviousPage}">
-                             <a href="#" class="prev-btn" th:href="@{${pageInfo.pageNum-1} == 1 ? '/archives/' : '/archives/page/' + ${pageInfo.pageNum-1}+'/'}"></a>
-                         </span>
-                            <span th:each="pageNum, iterStat : ${pageInfo.navigatepageNums}">
-                             <span th:if="${pageNum == pageInfo.pageNum}" class="page current">
-                                 <a href="javascript:void(0)" th:text="${pageNum}"></a>
-                             </span>
-                            <span th:if="${pageNum != pageInfo.pageNum}" class="page">
-                                <a th:href="@{'/archives/page/' + ${pageNum}+'/'}" th:text="${pageNum}"></a>
-                            </span>
-                         </span>
-                        <span class="page" th:if="${pageInfo.hasNextPage}">
-                             <a href="#" class="next-btn" th:href="@{'/archives/page/' + ${pageInfo.pageNum + 1}+'/'}"></a>
-                         </span>
                     </div>
+                </div>
+
+                <div class="pagination">
+                     <span class="page" th:if="${pageInfo.hasPreviousPage}">
+                         <a href="#" class="prev-btn" th:href="@{${pageInfo.pageNum-1} == 1 ? '/archives/' : '/archives/page/' + ${pageInfo.pageNum-1}+'/'}"></a>
+                     </span>
+                        <span th:each="pageNum, iterStat : ${pageInfo.navigatepageNums}">
+                         <span th:if="${pageNum == pageInfo.pageNum}" class="page current">
+                             <a href="javascript:void(0)" th:text="${pageNum}"></a>
+                         </span>
+                        <span th:if="${pageNum != pageInfo.pageNum}" class="page">
+                            <a th:href="@{'/archives/page/' + ${pageNum}+'/'}" th:text="${pageNum}"></a>
+                        </span>
+                     </span>
+                    <span class="page" th:if="${pageInfo.hasNextPage}">
+                         <a href="#" class="next-btn" th:href="@{'/archives/page/' + ${pageInfo.pageNum + 1}+'/'}"></a>
+                     </span>
+                </div>
             </div>
 
             <div class="top-btn"></div>
