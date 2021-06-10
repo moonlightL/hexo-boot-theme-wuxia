@@ -18,6 +18,10 @@
 
 <body>
 <div class="wrap">
+
+    <img class="bg" th:src="@{${prefix} + '/source/images/bg-01.jpg'}" alt="">
+    <div class="fade"></div>
+
     <div th:replace="~{theme/wuxia/common :: nav}"></div>
     <div class="main">
         <div class="post-detail">
