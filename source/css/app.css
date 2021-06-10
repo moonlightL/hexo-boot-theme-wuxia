@@ -56,7 +56,7 @@ a:hover {
     object-fit: cover;
 }
 
-.fade {
+.fadeBottom {
     position: absolute;
     bottom: 164px;
     display: block;
@@ -813,7 +813,7 @@ div.nav .nav-list > li:hover a.more~.second-menu {
 .main .post-detail .post-toc {
     position: absolute;
     width: 200px;
-    left: 4rem;
+    left: -12rem;
 }
 
 .main .post-detail .toc-head {
