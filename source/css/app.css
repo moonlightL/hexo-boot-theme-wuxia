@@ -834,15 +834,17 @@ div.nav .nav-list > li:hover a.more~.second-menu {
 
 .main .post-detail .toc-head {
     width: 200px;
-    height: 21px;
-    margin: 45px auto 20px;
+    height: 45px;
     font-size: 20px;
     font-family: "DaSong", sans-serif;
+    background: #a22020;
+    color: #fff;
 }
 
 .main .post-toc.affix .toc-head {
     position: fixed;
     top: 76px;
+    margin: 45px auto 20px;
 }
 
 .main .post-toc.affix .toc-panel {
@@ -872,6 +874,7 @@ div.nav .nav-list > li:hover a.more~.second-menu {
     /*border-top: 1px solid #912E2E;*/
     border-left: 1px solid #912E2E;
     border-right: 1px solid #912E2E;
+    border-bottom: 1px solid #912E2E;
     padding: 1rem;
 }
 
@@ -1061,8 +1064,6 @@ div.nav .nav-list > li:hover a.more~.second-menu {
 
 .main .post-content pre {
     width: 100%;
-    padding: 1rem 0 0 0;
-    background-color: #000;
     border-radius: 0 0 4px 0;
     text-shadow: none;
     font-size: 15px;
@@ -1076,19 +1077,6 @@ div.nav .nav-list > li:hover a.more~.second-menu {
     position: relative;
     background: #2d2d2d;
     color: #F1F1F1;
-}
-
-.main .post-content pre code::before {
-    content: " ";
-    position: absolute;
-    border-radius: 50%;
-    background: #fc625d;
-    width: 12px;
-    height: 12px;
-    top: -22px;
-    left: 12px;
-    box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
-    z-index: 2;
 }
 
 .main .post-content .highlight td {
