@@ -748,6 +748,78 @@ div.nav .nav-list > li:hover a.more~.second-menu {
 
 }
 
+/** 动态  */
+.main .dynamic-list {
+    clear: both;
+    width: 100%;
+}
+
+.main .dynamic-list .dynamic-item {
+    position: relative;
+    margin: 15px auto;
+    user-select: none;
+    box-sizing: border-box;
+    width: 90%;
+    border: 1px solid #a22020;
+}
+
+.main .dynamic-list .dynamic-item .items {
+    position: relative;
+    display: block;
+}
+
+.main .dynamic-list .dynamic-item .items .date {
+    padding: 1rem;
+    background: #881009;
+    color: #FFF;
+}
+
+.main .dynamic-list .dynamic-item .content {
+    margin: 1rem 0;
+}
+
+.main .dynamic-list .dynamic-item .content img.custom-img,
+.main .dynamic-list .dynamic-item .content video,
+.main .dynamic-list .dynamic-item .content iframe {
+    max-width: 720px !important;
+    max-height: 368px !important;
+    object-fit: cover;
+}
+
+.main .dynamic-list .dynamic-item .content p {
+    margin-top: 1rem;
+}
+
+.main .dynamic-list .dynamic-item .meta {
+    padding: 1rem;
+}
+
+.main .dynamic-list .dynamic-item .desc {
+    width: 100%;
+    font-size: 16px;
+    line-height: 26px;
+    color: #2c2c2c;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+@media (max-width:767px) {
+
+    .main .dynamic-list .dynamic-item .content img.custom-img {
+        width: 90% !important;
+        height: 146px;
+    }
+
+    .main .dynamic-list .dynamic-item .content video {
+        width: 270px;
+        height: 146px;
+    }
+
+    .main .dynamic-list .dynamic-item .content iframe {
+        width: 270px;
+    }
+}
+
 /** 关于  */
 
 .main .about-content {

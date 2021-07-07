@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="~{theme/wuxia/common :: meta}"></div>
+    <meta property="og:title" th:content="${'动态 | ' + #servletContext.getAttribute('configMap')['blog_name']}" />
+    <title>动态 | [[${#servletContext.getAttribute('configMap')['blog_name']}]]</title>
+    <div th:replace="~{theme/wuxia/common :: link}"></div>
+</head>
+
+<body>
+    <div class="wrap">
+
+        <div class="cover">
+            <img th:src="@{${prefix} + '/source/images/bg-01.jpg'}" alt="">
+            <div class="fadeBottom"></div>
+        </div>
+
+        <div th:replace="~{theme/wuxia/common :: nav}"></div>
+
+        <div class="main">
+            <h2>
+                <i class="fa fa-comments-o"></i> 闲言碎语
+            </h2>
+            <div class="dynamic-list">
+                <div class="dynamic-item" th:each="dynamic : ${pageInfo.list}">
+                    <div class="items">
+                        <div class="date">
+                            <i class="fa fa-clock-o"></i> 发布于 [[${dynamic.timeDesc}]]
+                        </div>
+                        <div class="meta">
+                            <div class="content" th:utext="${dynamic.content}"></div>
+                            <div class="desc">
+                                <a class="praise" href="javascript:void(0)" th:data-id="${dynamic.id}">
+                                    <i class="fa fa-heart-o"></i>&nbsp;<span class="praise-num">[[${dynamic.praiseNum}]]</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pagination">
+                     <span class="page" th:if="${pageInfo.hasPreviousPage}">
+                         <a href="#" class="prev-btn" th:href="@{${pageInfo.pageNum-1} == 1 ? '/dynamics/' : '/dynamics/page/' + ${pageInfo.pageNum-1}+'/'}"></a>
+                     </span>
+                <span th:each="pageNum, iterStat : ${pageInfo.navigatepageNums}">
+                         <span th:if="${pageNum == pageInfo.pageNum}" class="page current">
+                             <a href="javascript:void(0)" th:text="${pageNum}"></a>
+                         </span>
+                        <span th:if="${pageNum != pageInfo.pageNum}" class="page">
+                            <a th:href="@{'/dynamics/page/' + ${pageNum}+'/'}" th:text="${pageNum}"></a>
+                        </span>
+                     </span>
+                <span class="page" th:if="${pageInfo.hasNextPage}">
+                         <a href="#" class="next-btn" th:href="@{'/dynamics/page/' + ${pageInfo.pageNum + 1}+'/'}"></a>
+                     </span>
+            </div>
+        </div>
+
+        <div class="top-btn"></div>
+
+        <div th:replace="~{theme/wuxia/common :: footer}"></div>
+    </div>
+    <div th:replace="~{theme/wuxia/common :: script}"></div>
+</body>
+</html>
