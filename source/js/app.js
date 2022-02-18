@@ -6,12 +6,6 @@
             bootstrap: {
                 js: baseLink + "/source/css/bootstrap/js/bootstrap.min.js"
             },
-            about: {
-                js: baseLink + "/source/js/about.js?v=" + version
-            },
-            detail: {
-                js: baseLink + "/source/js/detail.js?v=" + version
-            },
             highlight: {
                 js: baseLink + "/source/js/highlightjs/highlight.pack.js"
             },
@@ -61,8 +55,8 @@
     };
 
     const postEvent = function() {
-        let $postComment = $("#post-comment");
-        if ($postComment.length > 0) {
+        let $detail = $("#post-content");
+        if ($detail.length > 0) {
 
             $.getScript(APP.plugins.toc.js, function () {
                 $(".toc-panel").html(tocHelper("nav"));
@@ -90,10 +84,6 @@
                 });
             });
 
-            $.getScript(APP.plugins.detail.js, function () {
-                initComment($postComment, window.postId, window.canComment);
-            });
-
             tocPositionEvent();
         }
     };
@@ -103,15 +93,6 @@
             let $postToc = $("#postToc");
             $postToc.affix({ offset: 960});
         });
-    };
-
-    const aboutEvent = function() {
-        let $about = $("#about-comment");
-        if ($about.length > 0) {
-            $.getScript(APP.plugins.about.js, function () {
-                initComment($about);
-            });
-        }
     };
 
     const navEvent = function() {
@@ -126,7 +107,6 @@
         navEvent();
         toTop();
         postEvent();
-        aboutEvent();
     });
 
 })(jQuery, window);

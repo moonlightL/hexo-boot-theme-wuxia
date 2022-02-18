@@ -53,11 +53,12 @@
             </div>
         </div>
 
-        <div id="post-comment" class="comment-container"></div>
+        <!-- 评论 -->
         <script type="text/javascript" th:inline="javascript">
-            window.postId = [[${post.id}]];
-            window.canComment = [[${post.comment}]]
+            window.canComment = [[${post.comment}]];
         </script>
+        <div th:replace="~{theme/wuxia/common :: comment}"></div>
+
     </div>
     <div class="top-btn"></div>
     <div th:replace="~{theme/wuxia/common :: footer}"></div>
