@@ -30,10 +30,10 @@
             <h1 class="title">[[${post.title}]]</h1>
 
             <div class="meta">
-                <span><i class="fa fa-calendar-o"></i> <span class="hidden-xs">发表于</span> <span> [[${post.year} + '-' + ${post.month} + '-' + ${post.day}]]</span></span> |
-                <span><i class="fa fa-folder-o"></i> <span class="hidden-xs">分类与</span> <span><a th:href="@{'/categories/'+${post.categoryName}+'/'}"> [[${post.categoryName}]]</a></span></span> |
-                <span><i class="fa fa-eye"></i> <span class="hidden-xs">阅读数</span> <span> [[${post.readNum}]]</span></span> |
-                <span><i class="fa fa-comments-o"></i> <span class="hidden-xs">评论数</span> <span> [[${post.commentNum}]]</span></span>
+                <span><i class="fa fa-calendar-o"></i>&nbsp;<span class="hidden-xs">发表于</span> <span> [[${post.year} + '-' + ${post.month} + '-' + ${post.day}]]</span></span> |
+                <span><i class="fa fa-folder-o"></i>&nbsp;<span class="hidden-xs">分类与</span> <span><a th:href="@{'/categories/'+${post.categoryName}+'/'}"> [[${post.categoryName}]]</a></span></span> |
+                <span><i class="fa fa-eye"></i>&nbsp;<span class="hidden-xs">阅读数</span> <span> [[${post.readNum}]]</span></span> |
+                <span><i class="fa fa-comments-o"></i>&nbsp;<span class="hidden-xs">评论数</span> <span> [[${post.commentNum}]]</span></span>
             </div>
 
             <div class="post-reprint-info" th:if="${post.reprint}">
@@ -54,10 +54,12 @@
         </div>
 
         <!-- 评论 -->
-        <script type="text/javascript" th:inline="javascript">
-            window.canComment = [[${post.comment}]];
-        </script>
-        <div th:replace="~{theme/wuxia/common :: comment}"></div>
+        <div class="post-comment">
+            <script type="text/javascript" th:inline="javascript">
+                window.canComment = [[${post.comment}]];
+            </script>
+            <div th:replace="~{theme/wuxia/common :: comment(${post.comment})}"></div>
+        </div>
 
     </div>
     <div class="top-btn"></div>

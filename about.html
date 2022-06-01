@@ -21,7 +21,7 @@
                   <div class="about-desc" th:utext="${md.md2html(#objects.nullSafe(about.descr, '懒人一枚~~'))}"></div>
               </div>
 
-            <div th:replace="~{theme/wuxia/common :: comment}"></div>
+            <div th:replace="~{theme/wuxia/common :: comment(true)}"></div>
         </div>
 
         <div class="top-btn"></div>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="~{theme/wuxia/common :: meta}"></div>
+    <meta property="og:title" th:content="${'专辑 | ' + #servletContext.getAttribute('configMap')['blog_name']}" />
+    <title>专辑 | [[${#servletContext.getAttribute('configMap')['blog_name']}]]</title>
+    <div th:replace="~{theme/wuxia/common :: link}"></div>
+</head>
+<body>
+<div class="wrap">
+
+    <div class="cover">
+        <img th:src="@{${prefix} + '/source/images/bg-01.jpg'}" alt="">
+        <div class="fadeBottom"></div>
+    </div>
+
+    <div th:replace="~{theme/wuxia/common :: nav}"></div>
+
+    <div class="main">
+        <div class="album-content">
+            <h2>
+                <i class="fa fa-th"></i> 回忆专辑
+            </h2>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4" th:each="album,iterStat: ${albumList}">
+                        <div class="album-item animate-box">
+                            <a data-pjax th:href="@{'/albumDetail/' + ${album.id} + '/'}">
+                                <img th:data-original="@{${album.coverUrl}}" class="lazyload">
+                                <div class="descr">
+                                    <span th:if="${album.visitType == 0}"><i class="fa fa-lock"></i></span> [[${album.name}]]<span> ([[${album.detailNum}]])</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div th:if="${albumNum == 0}" th:style="'text-align:center;'" th:text="'~~作者偷懒，没有创建专辑栏目~~'"></div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="~{theme/wuxia/common :: footer}"></div>
+</div>
+<div th:replace="~{theme/wuxia/common :: script}"></div>
+</body>
+</html>

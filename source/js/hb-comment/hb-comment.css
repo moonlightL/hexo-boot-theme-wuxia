@@ -44,12 +44,11 @@
     animation-name: fadeIn;
 }
 
-.hb-w-body .hb-w-body-item .main {
+.hb-w-body .hb-w-body-item .hb-main {
     width:  100%;
-    margin-top: 0 !important;
 }
 
-.hb-w-body .hb-w-body-item .main .info {
+.hb-w-body .hb-w-body-item .hb-main .info {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -87,7 +86,7 @@
     background: #ebeaea;
     border-radius: 0;
     border: 1px solid #afb2c1;
-    padding: 1rem;
+    line-height: 36px;
 }
 
 .hb-w-body .hb-comment-info input {
@@ -112,7 +111,6 @@
     font-size: 14px;
     border: 1px solid #afb2c1;
     padding-left: 10px;
-    border-radius: 3px;
 }
 .hb-w-body .hb-comment-help {
     position: relative;
@@ -133,14 +131,14 @@
 .hb-w-body .hb-comment-help .emoji-panel {
     margin-top: 5px;
     box-shadow: 0 1px 10px #aaa;
-    max-height: 15rem;
+    max-height: 16.5rem;
     overflow: hidden;
     animation-duration: .5s;
     animation-name: slideIn;
 }
 
 .hb-w-body .hb-comment-help .emoji-panel .emoji-ul {
-    height: 96px;
+    height: 120px;
     overflow: auto;
     display: none;
 }
@@ -213,33 +211,31 @@
     padding-bottom: 2rem;
 }
 
-.hb-r-body .hb-r-body-item .main {
+.hb-r-body .hb-r-body-item .hb-main {
     width: 100%;
     margin-left: 2rem;
-    margin-top: 0 !important;
 }
 
-.hb-r-body .hb-r-body-item .main .info {
+.hb-r-body .hb-r-body-item .hb-main .info {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.hb-r-body .hb-r-body-item .main .info .action-reply {
+.hb-r-body .hb-r-body-item .hb-main .info .action-reply {
     color: #b4bbbd;
 }
-.hb-r-body .hb-r-body-item .main .info .action-reply:hover {
-    color: #881009;
+.hb-r-body .hb-r-body-item .hb-main .info .action-reply:hover {
+    color: #8fabbb;
 }
-.hb-r-body .hb-r-body-item .main .info .nickname {
+.hb-r-body .hb-r-body-item .hb-main .info .nickname {
     font-weight: bold;
     font-size: 15px;
     margin-bottom: 1rem;
 }
-.hb-r-body .hb-r-body-item .main .info .blogger {
+.hb-r-body .hb-r-body-item .hb-main .info .blogger {
     padding: 2px 4px;
     font-size: 12px;
-
     background-color: #67c23a20;
     border: 1px solid #67c23a80;
     border-radius: 2px;
@@ -256,18 +252,17 @@
     border-top: 1px solid #ffeeba;
     border-left: none;
     border-bottom: 1px solid #ffeeba;
-    margin: 0 0 26px 0 !important;
-    background-image: url(/admin/assets/custom/images/openquote.gif);
+    margin: 0 0 2rem !important;
+    background-image: url(./image/openquote.gif);
     background-position: top left;
     background-repeat: no-repeat;
-    text-indent: 23px;
     font-size: 14px;
     color: #856404;
 }
 
 .hb-r-body .hb-r-body-item blockquote.original-content p {
     display: block;
-    background-image: url(/admin/assets/custom/images/closequote.gif);
+    background-image: url(./image/closequote.gif);
     background-repeat: no-repeat;
     background-position: bottom right;
     padding: 10px 5px !important;
@@ -373,14 +368,9 @@
 
 @media (max-width: 767px) {
 
-    .hb-comment {
-        position: relative;
-        width: calc(100% - 2rem);
-    }
-
     .hb-w-body.clone {
-        transform: translateX(-3rem);
-        width: calc(100% - -52px);
+        transform: translateX(-7rem);
+        width: calc(100% + 7rem);
      }
 
     .hb-w-body .hb-comment-info {
@@ -396,4 +386,12 @@
         margin-left: 0;
     }
 
+    .hb-r-body .hb-r-body-item .replies .blogger {
+        display: none;
+    }
+
+    .hb-r-body .hb-r-body-item .extras .os-name,
+    .hb-r-body .hb-r-body-item .extras .browser {
+        font-size: 12px;
+    }
 }

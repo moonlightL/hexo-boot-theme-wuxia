@@ -59,7 +59,7 @@
         if ($detail.length > 0) {
 
             $.getScript(APP.plugins.toc.js, function () {
-                $(".toc-panel").html(tocHelper("nav"));
+                $(".toc-panel").html(tocHelper("post-content", "nav"));
                 $('body').scrollspy({ offset: 300, target: '.toc-panel' });
                 let headArr = $(".post-detail").find("h3");
                 $(window).scroll(function(e) {

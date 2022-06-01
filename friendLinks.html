@@ -24,7 +24,7 @@
                           <h2>
                               <span>本站信息</span>
                           </h2>
-                          <ul>
+                          <ul style="padding: 0 1rem">
                               <li>站名: [[${#servletContext.getAttribute('configMap')['blog_name']}]]</li>
                               <li>地址: [[${#servletContext.getAttribute('configMap')['home_page']}]]</li>
                               <li>Logo: [[${#servletContext.getAttribute('configMap')['logo_url']}]]</li>
@@ -37,7 +37,7 @@
                               <span>兵器谱</span>
                           </h2>
 
-                        <div class="container">
+                        <div class="container" style="padding: 0 2rem">
                            <div class="row" th:if="${#lists.isEmpty(webSiteList) == false}">
                               <div class="col-md-4 col-sm-6 col-xs-12" th:each="link,iterStat: ${webSiteList}">
                                     <a class="link-item-tool" th:href="@{${link.homeUrl}}" target="_blank">
@@ -62,7 +62,7 @@
                               <span>江湖好友</span>
                           </h2>
 
-                        <div class="container">
+                        <div class="container" style="padding: 0 2rem">
                             <div class="row" th:if="${#lists.isEmpty(bloggerList) == false}">
                                 <div class="col-md-4 col-sm-6 col-xs-12" th:each="link,iterStat: ${bloggerList}">
                                     <a class="link-item-tool" th:href="@{${link.homeUrl}}" target="_blank">
@@ -80,18 +80,20 @@
                         </div>
                      </div>
 
-<!--                         <div class="link-item">-->
-<!--                              <h2>-->
-<!--                                  <span>交友令</span>-->
-<!--                              </h2>-->
-<!--                              <ul>-->
-<!--                                <li>先友后链，申请前请先提前做好本站友情链接</li>-->
-<!--                                <li>不接受新站链接（3个月以内）</li>-->
-<!--                                <li>不与内容污秽、暴力的、广告挂马的网站交换</li>-->
-<!--                                <li>优先和具有原创作品的全站 HTTPS 站点交换</li>-->
-<!--                                <li>申请方式请在下方留言区留言, 格式如上文本站信息</li>-->
-<!--                              </ul>-->
-<!--                         </div>-->
+                     <div class="link-item">
+                          <h2>
+                              <span>交友令</span>
+                          </h2>
+                          <ul style="padding: 0 1rem">
+                            <li>先友后链，申请前请先提前做好本站友情链接</li>
+                            <li>不接受新站链接（3个月以内）</li>
+                            <li>不与内容污秽、暴力的、广告挂马的网站交换</li>
+                            <li>优先和具有原创作品的全站 HTTPS 站点交换</li>
+                            <li>申请方式请在下方留言区留言, 格式如上文本站信息</li>
+                          </ul>
+                     </div>
+
+                      <div th:replace="~{theme/wuxia/common :: comment(true)}"></div>
                   </div>
             </div>
 
