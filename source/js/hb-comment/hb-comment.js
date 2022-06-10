@@ -317,7 +317,7 @@
         }
         htmlArr.push('<div class="hb-w">');
         htmlArr.push('<div class="hb-w-head">');
-        htmlArr.push('<h2>' + self.options.title + '</h2> <span class="glyphicon glyphicon-info-sign hb-tip" title="评论信息使用cookie技术存储,用户根据情况自行处理"></span>' + (self.visitor ? '（欢迎归来）' : '') + ' <span></span>');
+        htmlArr.push('<h2>' + self.options.title + '</h2> <span class="glyphicon glyphicon-info-sign" title="评论信息使用cookie技术存储,用户根据情况自行处理"></span>' + (self.visitor ? '（欢迎归来）' : '') + ' <span></span>');
         htmlArr.push('</div>');
 
         htmlArr.push('<div class="hb-w-body">');
@@ -595,7 +595,7 @@
 
                 sendRequest({
                     type: "GET",
-                    url: "https://api.mou.ge/api/qq?qq=" + qq,
+                    url: "/getQQInfo/" + qq,
                     success: function(resp) {
                         getElementByClassName(commentBody, "hb_avatar").setAttribute("src", resp.data.avatar);
                         getElementByClassName(commentBody, "hb_nickname").value = resp.data.name;
@@ -622,7 +622,7 @@
                 return;
             }
 
-            let htmlArr = ['<div class="emoji-panel emoji"><div class="emoji" style="min-height: 2rem;background-color: #8fabbb"></div>'];
+            let htmlArr = ['<div class="emoji-panel emoji"><div class="emoji" style="min-height: 1rem;"></div>'];
             let emojiManager = self.emojiManager;
             let emojiArr = emojiManager.emojiArr;
             for (let i = 0; i < emojiArr.length; i++) {
@@ -634,7 +634,7 @@
                 });
                 htmlArr.push('</ul>');
             }
-            htmlArr.push('<div style="clear: both;border-top: 1px solid #f1f1f1;height: 2.5rem;" class="emoji">');
+            htmlArr.push('<div style="clear: both;border-top: 1px solid #f1f1f1;height: 1.8rem;" class="emoji">');
             for (let i = 0; i < emojiArr.length; i++) {
                 let active = (i == 0 ? ' active' : '');
                 htmlArr.push('<span id="emoji_tab_' + i + '" class="emoji emoji-tab ' + active + '">' + emojiManager.typeArr[i] + '</span>');

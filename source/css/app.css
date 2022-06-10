@@ -1707,10 +1707,6 @@ button.run-code:hover {
     background: #FFF;
 }
 
-.emoji-panel > div.emoji:first-child {
-    background: #781e18 !important;
-}
-
 .hb-w-body .hb-w-body-item,
 .hb-r-body .hb-r-body-item {
     margin: 0;
@@ -1744,6 +1740,10 @@ button.run-code:hover {
     color: #a72d2d;
 }
 
+.hb-r-body .extras {
+    margin-bottom: 1rem;
+}
+
 .hb-comment a, .hb-comment a:hover,
 .hb-comment a:active, .hb-comment a:visited {
     color: #a72d2d;
@@ -1760,6 +1760,24 @@ button.run-code:hover {
     padding: 0;
 }
 
+.hb-r-body .hb-r-body-item .hb-main .info .blogger {
+    background-color: #c23a3a20;
+    border: 1px solid #c23a5480;
+    color: #c23a4d;
+}
+
+.hb-r-body .hb-r-body-item .extras .os-name {
+    background-color: #53d3f520;
+    border: 1px solid #72b3f3;
+    color: #52add9;
+}
+
+.hb-r-body .hb-r-body-item .extras .browser {
+    background-color: #f1df6620;
+    border: 1px solid #cda64e80;
+    color: #d5a82e;
+}
+
 
 .comment_send_info {
     padding: 1rem;
@@ -1767,3 +1785,4 @@ button.run-code:hover {
     color: #FFF;
     background-color: #890909;
 }
+
